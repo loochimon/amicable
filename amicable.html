@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Amicable Numbers</title>
+   <style>
+      h1{
+        padding-top: 30px;
+        padding-left: 20px;
+        font-family: avenir;
+      }
+
+      #print1, #print2, #sum1, #sum2{
+        padding-top: 20px;
+        padding-left: 20px;
+        font-family: avenir;
+      }
+
+      #show{
+        padding-top: 20px;
+        padding-left: 20px;
+        font-family: avenir;
+        font-weight: bold;
+      }
+
+      form{
+        padding-top: 30px;
+        padding-left: 20px;
+        font-family: avenir;
+        line-height: 200%
+      }
+      
+    </style>
+</head>
+
+<body style="background-color: #DECFF1">
+    <script language="javascript">
+
+        function calcfactor(num, arr){
+            for (let i = 1; i < num; i++){
+                if (isAFactor(num, i)){
+                    arr.push(i);    
+                }
+            }
+        }
+
+        function isAFactor(num, factor){
+            return (num%factor == 0);
+        }
+
+        function sum(arr){
+            let total = 0;
+            for (let i = 0; i < arr.length; i++){
+                total += arr[i];
+            }
+            return total;
+        }
+
+        function calc(){
+            let n1 = document.getElementById("num1").value;
+            let n2 = document.getElementById("num2").value;
+            let factors1 = [];
+            let factors2 = [];
+
+            calcfactor(n1, factors1);
+            calcfactor(n2, factors2);
+
+            let sum1 = sum(factors1);
+            let sum2 = sum(factors2);
+
+            if (n1 == sum2 && n2 == sum1){
+                document.getElementById("show").innerHTML = ("The numbers " + n1 + " and " + n2 + " are amicable");
+            } else{
+                document.getElementById("show").innerHTML = ("The numbers " + n1 + " and " + n2 + " are not amicable");
+            }
+                alert("Factors for " + n1 + " is " + factors1);
+                alert("Factors for " + n2 + " is " + factors2);
+
+                document.getElementById("print1").innerHTML = ("The factors for " + n1 + " are " + factors1);
+                document.getElementById("sum1").innerHTML = ("Sum for " + n1 + " is " + sum1);
+                document.getElementById("print2").innerHTML = ("The factors for " + n2 + " are " + factors2);
+                document.getElementById("sum2").innerHTML = ("Sum for " + n2 + " is " + sum2);
+        }
+     
+    </script>
+    
+    <h1>Enter 2 numbers and check whether they are amicable:</h1>
+	<form>
+	    <input type="text" name="num1" id="num1"><br>
+        <input type="text" name="num2" id="num2"><br>
+	    <input type="button" value="Check" id="btn" onclick = "calc()">
+	</form>
+    <div id = "show"></div>
+    <div id = "print1"></div>
+    <div id = "sum1"></div>
+    <div id = "print2"></div>
+    <div id = "sum2"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
